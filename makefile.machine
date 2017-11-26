@@ -1,0 +1,25 @@
+#
+# makefile for Linux (x86, PPC, alpha ...)
+#
+
+# compiling fail,change this, link: http://www.ihowandwhy.com/z/MACOSXEICaptain%E4%B8%8A%E4%BB%8E%E6%BA%90%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91p7zip_15.09%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F
+#OPTFLAGS=-O -s
+OPTFLAGS=-O 
+
+ALLFLAGS=${OPTFLAGS} -pipe \
+    	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
+	-DNDEBUG -D_REENTRANT -DENV_UNIX \
+	-D_7ZIP_LARGE_PAGES \
+	$(LOCAL_FLAGS)
+
+CXX=g++
+CC=gcc
+CC_SHARED=-fPIC
+LINK_SHARED=-fPIC -shared
+
+LOCAL_LIBS=-lpthread
+LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+
+OBJ_CRC32=$(OBJ_CRC32_C)
+OBJ_AES=
+
